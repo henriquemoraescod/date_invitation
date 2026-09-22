@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite confirmado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    --cream: #FFF6E7;
+    --cream-2: #FDEBD0;
+    --surface: #FFFFFF;
+    --ink: #2B2116;
+    --ink-soft: #6E5D4C;
+    --coral: #FF6B4A;
+    --coral-deep: #D6472B;
+    --plum: #5C4270;
+    --mustard: #EFAF13;
+    --shadow: rgba(43, 33, 22, 0.16);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --cream: #221A13;
+      --cream-2: #2B2117;
+      --surface: #2E2418;
+      --ink: #F8ECDC;
+      --ink-soft: #C9B79E;
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #221A13;
+    --cream-2: #2B2117;
+    --surface: #2E2418;
+    --ink: #F8ECDC;
+    --ink-soft: #C9B79E;
+    --shadow: rgba(0, 0, 0, 0.45);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background:
+      radial-gradient(circle at 15% -10%, #FFD7A8 0%, transparent 55%),
+      radial-gradient(circle at 100% 15%, #E7C3EE 0%, transparent 50%),
+      radial-gradient(circle at 50% 100%, #FFC9A8 0%, transparent 60%),
+      var(--cream);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Nunito Sans', sans-serif;
+    min-height: 100%;
+  }
+  :root[data-theme="dark"] body, :root:not([data-theme="light"]) body {
+    @media (prefers-color-scheme: dark) {
+      background:
+        radial-gradient(circle at 15% -10%, #5C3A1F 0%, transparent 55%),
+        radial-gradient(circle at 100% 15%, #45304F 0%, transparent 50%),
+        radial-gradient(circle at 50% 100%, #5C331F 0%, transparent 60%),
+        var(--cream);
+      background-attachment: fixed;
+    }
+  }
+  :root[data-theme="dark"] body {
+    background:
+      radial-gradient(circle at 15% -10%, #5C3A1F 0%, transparent 55%),
+      radial-gradient(circle at 100% 15%, #45304F 0%, transparent 50%),
+      radial-gradient(circle at 50% 100%, #5C331F 0%, transparent 60%),
+      var(--cream);
+    background-attachment: fixed;
+  }
+  h1, h2, .display { font-family: 'Baloo 2', sans-serif; font-weight: 700; line-height: 1.08; margin: 0; }
+  p { line-height: 1.55; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 48px 22px 60px; }
+
+  .kicker {
+    display: inline-block;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--coral-deep);
+    background: #FBD9CC;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  :root[data-theme="dark"] .kicker { color: #FFD9CB; background: #4A2A1F; }
+
+  h1 { font-size: clamp(28px, 7vw, 38px); text-align: center; }
+  .sub {
+    margin-top: 16px;
+    font-size: 17px;
+    color: var(--ink-soft);
+    text-align: center;
+    max-width: 46ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-head { text-align: center; }
+
+  /* ---------- Ticket ---------- */
+  .ticket {
+    margin: 38px auto 0;
+    max-width: 460px;
+    background: var(--surface);
+    border-radius: 22px;
+    box-shadow: 0 16px 36px var(--shadow);
+    overflow: hidden;
+    transform: rotate(-0.6deg);
+    position: relative;
+  }
+  .ticket-main {
+    padding: 28px 26px 22px;
+    text-align: center;
+  }
+  .ticket-main .label-top {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 6px 0 4px;
+  }
+  .unit {
+    background: var(--cream-2);
+    border-radius: 14px;
+    padding: 12px 8px;
+    min-width: 62px;
+  }
+  .unit span {
+    display: block;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--coral-deep);
+  }
+  :root[data-theme="dark"] .unit span { color: var(--coral); }
+  .unit label {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  .perforation {
+    position: relative;
+    height: 0;
+    border-top: 2px dashed var(--cream-2);
+    margin: 0 0;
+  }
+  .perforation::before, .perforation::after {
+    content: '';
+    position: absolute;
+    top: -11px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--cream);
+  }
+  .perforation::before { left: -11px; }
+  .perforation::after { right: -11px; }
+
+  .ticket-stub {
+    padding: 22px 26px 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+  }
+  .field { text-align: left; }
+  .field .label {
+    display: block;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: lowercase;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+  }
+  .field .value {
+    display: block;
+    font-size: 15.5px;
+    font-weight: 700;
+  }
+  .field.full { grid-column: 1 / -1; }
+
+  .stamp {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-14deg) scale(0);
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 0.06em;
+    color: var(--coral-deep);
+    border: 4px solid var(--coral-deep);
+    padding: 6px 18px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s ease;
+    pointer-events: none;
+    background: rgba(255,255,255,0.85);
+  }
+  :root[data-theme="dark"] .stamp { background: rgba(46,36,24,0.9); }
+  .stamp.show { transform: translate(-50%, -50%) rotate(-14deg) scale(1); opacity: 1; }
+
+  /* ---------- CTA ---------- */
+  .cta-area {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .btn {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 24px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 6px;
+  }
+  .btn-yes {
+    background: var(--coral-deep);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(214, 71, 43, .32);
+    transition: transform .15s ease;
+  }
+  .btn-yes:hover { transform: translateY(-2px); }
+  .btn-yes[disabled] { opacity: 0.55; cursor: default; transform: none; }
+  .btn-cal {
+    background: transparent;
+    border: 2px solid var(--cream-2);
+    color: var(--ink);
+  }
+  .result {
+    display: none;
+    margin-top: 18px;
+    font-size: 15.5px;
+    color: var(--ink-soft);
+  }
+  .result.show { display: block; }
+  .result strong { color: var(--coral-deep); }
+
+  footer { text-align: center; padding: 10px 0 30px; font-size: 13px; color: var(--ink-soft); }
+
+  .confetti-piece {
+    position: fixed;
+    top: -20px;
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 999;
+    animation: fall linear forwards;
+  }
+  @keyframes fall { to { transform: translateY(110vh) rotate(540deg); opacity: 0.9; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .confetti-piece { display: none; }
+    .stamp { transition: none; }
+  }
+
+  @media (max-width: 380px) {
+    .unit { min-width: 52px; padding: 10px 4px; }
+    .unit span { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="hero-head">
+    <span class="kicker">mudança de plano, convite de pé</span>
+    <h1>Ana Luiza, o cardápio mudou. A data, não.</h1>
+    <p class="sub">Descobri a tempo que peixe não é bem sua praia, então o plano original foi pro lixo. O que continua valendo: 25/09, 19h30, e você.</p>
+  </div>
+
+  <div class="ticket" id="ticket">
+    <div class="ticket-main">
+      <div class="label-top">faltam</div>
+      <div class="countdown">
+        <div class="unit"><span id="d">00</span><label>dias</label></div>
+        <div class="unit"><span id="h">00</span><label>horas</label></div>
+        <div class="unit"><span id="m">00</span><label>min</label></div>
+        <div class="unit"><span id="s">00</span><label>seg</label></div>
+      </div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-stub">
+      <div class="field"><span class="label">data</span><span class="value">25/09</span></div>
+      <div class="field"><span class="label">horário</span><span class="value">19h30</span></div>
+      <div class="field full"><span class="label">local</span><span class="value">surpresa 🤫 (combinamos antes)</span></div>
+      <div class="field full"><span class="label">cardápio</span><span class="value">sem peixe, prometido</span></div>
+    </div>
+    <div class="stamp" id="stamp">CONFIRMADO</div>
+  </div>
+
+  <div class="cta-area">
+    <button class="btn btn-yes" id="confirmBtn">Confirmar presença ✅</button>
+    <button class="btn btn-cal" id="calBtn">Adicionar ao calendário 📅</button>
+    <div class="result" id="result"></div>
+  </div>
+</div>
+
+<footer>local ainda em segredo, mas prometo avisar antes das 19h29.</footer>
+
+<script>
+  // countdown target: 25/09 19:30 (America/Sao_Paulo, UTC-3)
+  const target = new Date('2026-09-25T19:30:00-03:00').getTime();
+  const dEl = document.getElementById('d');
+  const hEl = document.getElementById('h');
+  const mEl = document.getElementById('m');
+  const sEl = document.getElementById('s');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+    if (diff <= 0) clearInterval(timer);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  const confirmBtn = document.getElementById('confirmBtn');
+  const calBtn = document.getElementById('calBtn');
+  const stamp = document.getElementById('stamp');
+  const result = document.getElementById('result');
+
+  confirmBtn.addEventListener('click', () => {
+    stamp.classList.add('show');
+    confirmBtn.textContent = 'Presença confirmada 🎉';
+    confirmBtn.disabled = true;
+    result.innerHTML = '<strong>Show!</strong> Te aviso o local com antecedência. Só separar a fome.<br><span style="font-size:13px;">Abrindo seu e-mail pra confirmar com o Henrique — é só tocar em enviar.</span>';
+    result.classList.add('show');
+    launchConfetti();
+
+    const subject = encodeURIComponent('Confirmado! 25/09 às 19h30 🎉');
+    const body = encodeURIComponent('Oi Henrique, bora sim! Te vejo dia 25/09 às 19h30.');
+    const mailtoLink = 'mailto:henrique.moraesf2003@gmail.com?subject=' + subject + '&body=' + body;
+    setTimeout(() => { window.location.href = mailtoLink; }, 900);
+  }, { once: true });
+
+  function launchConfetti() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const colors = ['#FF6B4A', '#D6472B', '#EFAF13', '#5C4270'];
+    for (let i = 0; i < 60; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + 'vw';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+      piece.style.opacity = 0.7 + Math.random() * 0.3;
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 3600);
+    }
+  }
+
+  // add to calendar via downloads capability
+  calBtn.addEventListener('click', async () => {
+    try {
+      const downloads = await window.claude?.use?.('downloads');
+      if (!downloads) {
+        calBtn.textContent = 'Calendário indisponível aqui';
+        return;
+      }
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        'SUMMARY:Date com Henrique',
+        'DTSTART:20260925T193000',
+        'DTEND:20260925T213000',
+        'DESCRIPTION:Local a combinar. Sem peixe no cardápio.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      await downloads.save({ filename: 'date-25-09.ics', data: ics });
+    } catch (e) {
+      calBtn.textContent = 'Não deu pra salvar, mas o compromisso é real';
+    }
+  });
+</script>
+</body>
+</html>
